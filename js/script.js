@@ -33,23 +33,31 @@ let s = "";
 //     "What does CSS stands for?",
 // ];
 input.addEventListener('keyup', () => {
-    a.innerHTML = "";
-    s = input.value;
-    suggestions.forEach((str) => {
-        if (str.search(s) >= 0 && s != "") {
-            // console.log(str + ": " + str.search(s));
-            // console.log(a);
-            a.insertAdjacentHTML('beforeend', "<li>" + str + "</li>")
-        }
-    })
-    si.classList.add("active");
-    li = document.querySelectorAll('.autocom-box li');
-    li.forEach((item) => {
-        item.addEventListener('click', () => {
-            input.value = item.innerHTML;
-            a.innerHTML = "";
-            // a.style.opacity = "0";
+    if (input.value == "") {
+        si.classList.remove("active");
+    }
+    else {
+        a.innerHTML = "";
+        s = input.value;
+        suggestions.forEach((str) => {
+            if (str.toLowerCase().search(s.toLowerCase()) >= 0 && s != "") {
+                // console.log(str + ": " + str.search(s));
+                // console.log(a);
+                a.insertAdjacentHTML('beforeend', "<li>" + str + "</li>")
+            }
+            else {
+
+            }
         })
-    })
+        si.classList.add("active");
+        li = document.querySelectorAll('.autocom-box li');
+        li.forEach((item) => {
+            item.addEventListener('click', () => {
+                input.value = item.innerHTML;
+                a.innerHTML = "";
+                // a.style.opacity = "0";
+            })
+        })
+    }
     // console.log(li)
 })
