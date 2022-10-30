@@ -32,7 +32,7 @@ let s = "";
 //     "What does HTML stands for?",
 //     "What does CSS stands for?",
 // ];
-input.addEventListener('input', () => {
+input.addEventListener('keyup', () => {
     a.innerHTML = "";
     s = input.value;
     suggestions.forEach((str) => {
